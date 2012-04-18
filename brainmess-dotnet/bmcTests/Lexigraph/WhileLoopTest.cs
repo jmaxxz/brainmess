@@ -20,6 +20,18 @@ namespace bmcTests
             Assert.AreEqual(1, m.LoopBegins);
             Assert.AreEqual(1, m.LoopEnds);
         }
+
+        [Test]
+        public void Loop_InheritsMutation_And_User_Interaction()
+        {
+            var instruction = new WhileLoop(new InstructionContainer(new []
+            {
+                new IncrementCurrentValue(-1), new IncrementCurrentValue(-1)
+            }));
+
+            Assert.IsFalse(instruction.InteractsWithUser);
+            Assert.IsTrue(instruction.MutatesState);
+        }
     }
 }
 

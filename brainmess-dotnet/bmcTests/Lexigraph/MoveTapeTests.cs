@@ -24,6 +24,18 @@ namespace bmcTests
             instruction.Emit(m);
             Assert.AreEqual(1, m.TapeBacks);
         }
+
+        [Test]
+        public void Nop ()
+        {
+            var instruction = new MoveTape(0);
+            Assert.IsFalse(instruction.MutatesState);
+        }
+        public void Has_No_UserInteraction()
+        {
+            var instruction = new MoveTape(1);
+            Assert.IsFalse(instruction.InteractsWithUser);
+        }
     }
 }
 

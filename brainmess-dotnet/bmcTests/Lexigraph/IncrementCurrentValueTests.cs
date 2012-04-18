@@ -24,6 +24,20 @@ namespace bmcTests
             instruction.Emit(m);
             Assert.AreEqual(1, m.ValueDecrements);
         }
+
+        [Test]
+        public void Nop ()
+        {
+            var instruction = new IncrementCurrentValue(0);
+            Assert.IsFalse(instruction.MutatesState);
+        }
+
+        [Test]
+        public void Has_No_UserInteraction()
+        {
+            var instruction = new IncrementCurrentValue(1);
+            Assert.IsFalse(instruction.InteractsWithUser);
+        }
     }
 }
 
